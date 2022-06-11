@@ -24,7 +24,9 @@ defmodule TodoApp.Umbrella.MixProject do
   # Dependencies listed here are available only for this project
   # and cannot be accessed from applications inside the apps/ folder.
   defp deps do
-    []
+    [
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
@@ -39,7 +41,8 @@ defmodule TodoApp.Umbrella.MixProject do
   defp aliases do
     [
       # run `mix setup` in all child apps
-      setup: ["cmd mix setup"]
+      setup: ["cmd mix setup"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end

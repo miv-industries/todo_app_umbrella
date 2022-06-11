@@ -5,7 +5,7 @@ config :todo_app, TodoApp.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "todo_app_dev",
+  database: "postgres",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -26,7 +26,8 @@ config :todo_app_web, TodoAppWeb.Endpoint,
   secret_key_base: "aFvDgvshCgEVF9myX9g/qMc9rPhm2pLWCi8VMxpdet+ODVUdFtVwPbF90eCDzJzT",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
